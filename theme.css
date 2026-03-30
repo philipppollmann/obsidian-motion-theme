@@ -1,0 +1,1316 @@
+/* =============================================================================
+   NOTION MOTION — Obsidian Theme
+   Pixel-accurate recreation of Notion's UI for Obsidian
+   Supports Light & Dark mode
+   ============================================================================= */
+
+/* -------------------------------------------------------------------------- */
+/* 0. Google Fonts — Inter                                                     */
+/* -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* -------------------------------------------------------------------------- */
+/* 1. Light Mode Variables                                                     */
+/* -------------------------------------------------------------------------- */
+.theme-light {
+  /* --- Backgrounds --- */
+  --background-primary:           #ffffff;
+  --background-primary-alt:       #f7f6f3;
+  --background-secondary:         #f7f6f3;
+  --background-secondary-alt:     #efeeeb;
+  --background-modifier-border:   #e9e9e7;
+  --background-modifier-hover:    rgba(55, 53, 47, 0.06);
+  --background-modifier-active-hover: rgba(55, 53, 47, 0.08);
+  --background-modifier-form-field: rgba(242, 241, 238, 0.6);
+  --background-modifier-success:  #d3f8d3;
+  --background-modifier-error:    #ffdede;
+
+  /* --- Text --- */
+  --text-normal:                  #37352f;
+  --text-muted:                   rgba(55, 53, 47, 0.65);
+  --text-faint:                   rgba(55, 53, 47, 0.4);
+  --text-accent:                  #2383e2;
+  --text-accent-hover:            #1a6dc7;
+  --text-on-accent:               #ffffff;
+  --text-error:                   #eb5757;
+  --text-warning:                 #dfab01;
+  --text-success:                 #0f7b6c;
+  --text-selection:               rgba(35, 131, 226, 0.25);
+  --text-highlight-bg:            rgba(251, 243, 219, 1);
+
+  /* --- Interactive --- */
+  --interactive-accent:           #2383e2;
+  --interactive-accent-hover:     #1a6dc7;
+  --interactive-normal:           rgba(55, 53, 47, 0.06);
+  --interactive-hover:            rgba(55, 53, 47, 0.08);
+  --interactive-accent-rgb:       35, 131, 226;
+
+  /* --- Borders & Dividers --- */
+  --divider-color:                #e9e9e7;
+  --divider-color-alt:            rgba(55, 53, 47, 0.09);
+
+  /* --- Scrollbars --- */
+  --scrollbar-bg:                 transparent;
+  --scrollbar-thumb-bg:           rgba(55, 53, 47, 0.12);
+  --scrollbar-active-thumb-bg:    rgba(55, 53, 47, 0.25);
+
+  /* --- Icons --- */
+  --icon-color:                   rgba(55, 53, 47, 0.45);
+  --icon-color-hover:             rgba(55, 53, 47, 0.75);
+  --icon-color-active:            #37352f;
+  --icon-color-focused:           #37352f;
+
+  /* --- Code --- */
+  --code-background:              rgba(135, 131, 120, 0.15);
+  --code-normal:                  #e03e3e;
+  --code-comment:                 rgba(55, 53, 47, 0.4);
+  --code-function:                #0f6cbd;
+  --code-important:               #df5000;
+  --code-keyword:                 #9065b0;
+  --code-operator:                #37352f;
+  --code-property:                #0f6cbd;
+  --code-punctuation:             #5c5c5c;
+  --code-string:                  #df5000;
+  --code-tag:                     #df5000;
+  --code-value:                   #df5000;
+
+  /* --- Callout tints --- */
+  --callout-default:              55, 53, 47;
+  --callout-info:                 35, 131, 226;
+  --callout-todo:                 35, 131, 226;
+  --callout-warning:              223, 171, 1;
+  --callout-error:                235, 87, 87;
+  --callout-success:              15, 123, 108;
+  --callout-question:             223, 171, 1;
+  --callout-tip:                  15, 123, 108;
+
+  /* --- Notion-specific surface colors --- */
+  --notion-surface:               #f7f6f3;
+  --notion-hover:                 rgba(55, 53, 47, 0.06);
+  --notion-selected:              rgba(35, 131, 226, 0.12);
+  --notion-border:                #e9e9e7;
+  --notion-shadow:                rgba(15, 15, 15, 0.05);
+  --notion-sidebar-text:          rgba(55, 53, 47, 0.65);
+  --notion-sidebar-hover:         rgba(55, 53, 47, 0.06);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Dark Mode Variables                                                      */
+/* -------------------------------------------------------------------------- */
+.theme-dark {
+  /* --- Backgrounds --- */
+  --background-primary:           #191919;
+  --background-primary-alt:       #1f1f1f;
+  --background-secondary:         #202020;
+  --background-secondary-alt:     #252525;
+  --background-modifier-border:   #373737;
+  --background-modifier-hover:    rgba(255, 255, 255, 0.055);
+  --background-modifier-active-hover: rgba(255, 255, 255, 0.08);
+  --background-modifier-form-field: rgba(255, 255, 255, 0.055);
+  --background-modifier-success:  rgba(15, 123, 108, 0.2);
+  --background-modifier-error:    rgba(235, 87, 87, 0.15);
+
+  /* --- Text --- */
+  --text-normal:                  rgba(255, 255, 255, 0.81);
+  --text-muted:                   rgba(255, 255, 255, 0.65);
+  --text-faint:                   rgba(255, 255, 255, 0.28);
+  --text-accent:                  #529cca;
+  --text-accent-hover:            #6badd4;
+  --text-on-accent:               #ffffff;
+  --text-error:                   #ff7369;
+  --text-warning:                 #ffb800;
+  --text-success:                 #3dcec0;
+  --text-selection:               rgba(82, 156, 202, 0.25);
+  --text-highlight-bg:            rgba(120, 100, 40, 0.5);
+
+  /* --- Interactive --- */
+  --interactive-accent:           #529cca;
+  --interactive-accent-hover:     #6badd4;
+  --interactive-normal:           rgba(255, 255, 255, 0.055);
+  --interactive-hover:            rgba(255, 255, 255, 0.08);
+  --interactive-accent-rgb:       82, 156, 202;
+
+  /* --- Borders & Dividers --- */
+  --divider-color:                #373737;
+  --divider-color-alt:            rgba(255, 255, 255, 0.09);
+
+  /* --- Scrollbars --- */
+  --scrollbar-bg:                 transparent;
+  --scrollbar-thumb-bg:           rgba(255, 255, 255, 0.1);
+  --scrollbar-active-thumb-bg:    rgba(255, 255, 255, 0.2);
+
+  /* --- Icons --- */
+  --icon-color:                   rgba(255, 255, 255, 0.35);
+  --icon-color-hover:             rgba(255, 255, 255, 0.65);
+  --icon-color-active:            rgba(255, 255, 255, 0.81);
+  --icon-color-focused:           rgba(255, 255, 255, 0.81);
+
+  /* --- Code --- */
+  --code-background:              rgba(135, 131, 120, 0.15);
+  --code-normal:                  #ff7369;
+  --code-comment:                 rgba(255, 255, 255, 0.35);
+  --code-function:                #6badd4;
+  --code-important:               #ffb800;
+  --code-keyword:                 #c08ee8;
+  --code-operator:                rgba(255, 255, 255, 0.81);
+  --code-property:                #6badd4;
+  --code-punctuation:             rgba(255, 255, 255, 0.55);
+  --code-string:                  #ffb800;
+  --code-tag:                     #ff7369;
+  --code-value:                   #ffb800;
+
+  /* --- Callout tints --- */
+  --callout-default:              255, 255, 255;
+  --callout-info:                 82, 156, 202;
+  --callout-todo:                 82, 156, 202;
+  --callout-warning:              255, 184, 0;
+  --callout-error:                255, 115, 105;
+  --callout-success:              61, 206, 192;
+  --callout-question:             255, 184, 0;
+  --callout-tip:                  61, 206, 192;
+
+  /* --- Notion-specific surface colors --- */
+  --notion-surface:               #252525;
+  --notion-hover:                 rgba(255, 255, 255, 0.055);
+  --notion-selected:              rgba(82, 156, 202, 0.15);
+  --notion-border:                #373737;
+  --notion-shadow:                rgba(0, 0, 0, 0.3);
+  --notion-sidebar-text:          rgba(255, 255, 255, 0.82);
+  --notion-sidebar-hover:         rgba(255, 255, 255, 0.07);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Base Typography & Body                                                   */
+/* -------------------------------------------------------------------------- */
+body {
+  --font-text-theme:              'Inter', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-monospace-theme:         'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  --font-interface-theme:         'Inter', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --font-text-size:               16px;
+  --line-height-normal:           1.6;
+  --line-height-tight:            1.3;
+
+  --radius-s:                     3px;
+  --radius-m:                     4px;
+  --radius-l:                     8px;
+  --radius-xl:                    12px;
+
+  --size-4-1:                     4px;
+  --size-4-2:                     8px;
+  --size-4-3:                     12px;
+  --size-4-4:                     16px;
+  --size-4-5:                     20px;
+
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  -webkit-font-smoothing:         antialiased;
+  -moz-osx-font-smoothing:        grayscale;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. App Layout                                                               */
+/* -------------------------------------------------------------------------- */
+.app-container {
+  background: var(--background-primary);
+}
+
+/* Remove default tab bar border */
+.workspace-tab-header-container {
+  border-bottom: 1px solid var(--notion-border);
+  background: var(--background-secondary);
+  padding: 0 4px;
+}
+
+.workspace-tab-header-container-inner {
+  gap: 1px;
+}
+
+/* Tab headers */
+.workspace-tab-header {
+  background: transparent;
+  border-radius: var(--radius-m) var(--radius-m) 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 12px;
+  border: none;
+  transition: background 60ms ease, color 60ms ease;
+  height: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.workspace-tab-header:hover {
+  background: var(--notion-hover);
+  color: var(--text-normal);
+}
+
+.workspace-tab-header.is-active {
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-weight: 500;
+  border-top: 2px solid var(--interactive-accent);
+  margin-top: -1px;
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--text-normal);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Sidebar / Left Panel                                                     */
+/* -------------------------------------------------------------------------- */
+.nav-folder-title,
+.nav-file-title {
+  font-size: 14px;
+  color: var(--text-normal);
+  border-radius: var(--radius-s);
+  padding: 1px 4px;
+  cursor: pointer;
+  transition: background 60ms ease, color 60ms ease;
+  font-weight: 400;
+  height: 27px;
+  line-height: 27px;
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+  background: var(--notion-sidebar-hover);
+  color: var(--text-normal);
+}
+
+.nav-file-title.is-active {
+  background: var(--notion-selected);
+  color: var(--text-normal);
+  font-weight: 500;
+}
+
+.nav-folder-children {
+  border-left: 1px solid var(--notion-border);
+  margin-left: 8px;
+  padding-left: 4px;
+}
+
+.nav-folder-title-content,
+.nav-file-title-content {
+  font-size: 14px;
+}
+
+/* Sidebar header */
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-normal);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Editor — Main Content Area                                               */
+/* -------------------------------------------------------------------------- */
+.markdown-source-view.mod-cm6,
+.markdown-preview-view {
+  /* Full width — respects Obsidian's own readable line width setting */
+}
+
+.cm-editor,
+.cm-scroller {
+  font-family: var(--font-text-theme);
+  font-size: var(--font-text-size);
+  line-height: var(--line-height-normal);
+  color: var(--text-normal);
+}
+
+/* Full-width editor pane */
+.workspace-leaf-content[data-mode="source"] .view-content,
+.workspace-leaf-content[data-mode="preview"] .view-content {
+  background: var(--background-primary);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7. Headings                                                                 */
+/* -------------------------------------------------------------------------- */
+
+/* H1 — Notion page title style */
+.cm-header-1,
+.markdown-preview-view h1,
+.HyperMD-header-1 .cm-header {
+  font-size: 2.5em;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-normal);
+  margin-top: 2px;
+  margin-bottom: 4px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* H2 */
+.cm-header-2,
+.markdown-preview-view h2,
+.HyperMD-header-2 .cm-header {
+  font-size: 1.875em;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text-normal);
+  margin-top: 1.4em;
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--notion-border);
+  padding-bottom: 6px;
+}
+
+/* H3 */
+.cm-header-3,
+.markdown-preview-view h3,
+.HyperMD-header-3 .cm-header {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-normal);
+  margin-top: 1.2em;
+  margin-bottom: 2px;
+}
+
+/* H4 */
+.cm-header-4,
+.markdown-preview-view h4,
+.HyperMD-header-4 .cm-header {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin-top: 1em;
+  margin-bottom: 2px;
+}
+
+/* H5, H6 */
+.cm-header-5,
+.cm-header-6,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 1em;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. Paragraphs & Body Text                                                   */
+/* -------------------------------------------------------------------------- */
+.markdown-preview-view p,
+.cm-line {
+  color: var(--text-normal);
+  font-size: var(--font-text-size);
+  line-height: var(--line-height-normal);
+  margin-bottom: 0.35em;
+}
+
+.markdown-preview-view p {
+  margin: 0 0 0.25em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 9. Links                                                                    */
+/* -------------------------------------------------------------------------- */
+a,
+.cm-hmd-internal-link,
+.cm-link,
+.internal-link,
+.external-link {
+  color: var(--text-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 80ms ease, color 80ms ease;
+}
+
+a:hover,
+.cm-hmd-internal-link:hover,
+.internal-link:hover,
+.external-link:hover {
+  color: var(--text-accent-hover);
+  border-bottom-color: var(--text-accent-hover);
+}
+
+/* Unresolved links */
+.is-unresolved {
+  color: var(--text-muted);
+  border-bottom: 1px dashed var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 10. Inline Code                                                              */
+/* -------------------------------------------------------------------------- */
+code,
+.cm-inline-code {
+  background: var(--code-background);
+  color: var(--code-normal);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-s);
+  border: none;
+  font-weight: 400;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 11. Code Blocks                                                              */
+/* -------------------------------------------------------------------------- */
+pre,
+.cm-content pre,
+.markdown-preview-view pre {
+  background: var(--code-background);
+  border-radius: var(--radius-m);
+  padding: 1.25em 1.5em;
+  overflow-x: auto;
+  border: 1px solid var(--notion-border);
+  margin: 0.5em 0;
+  position: relative;
+}
+
+pre code,
+.markdown-preview-view pre code {
+  background: transparent;
+  color: var(--text-normal);
+  padding: 0;
+  font-size: 0.875em;
+  line-height: 1.6;
+  border-radius: 0;
+}
+
+/* Code block language label */
+pre[class*="language-"]::before,
+.markdown-preview-view pre[class*="language-"]::before {
+  content: attr(class);
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-family: var(--font-interface-theme);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 12. Blockquotes                                                              */
+/* -------------------------------------------------------------------------- */
+blockquote,
+.markdown-preview-view blockquote {
+  border-left: 3px solid var(--interactive-accent);
+  background: transparent;
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+blockquote p,
+.markdown-preview-view blockquote p {
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 13. Lists                                                                   */
+/* -------------------------------------------------------------------------- */
+.markdown-preview-view ul,
+.markdown-preview-view ol {
+  padding-left: 1.5em;
+  margin: 0.25em 0;
+}
+
+.markdown-preview-view li {
+  margin: 2px 0;
+  color: var(--text-normal);
+  line-height: var(--line-height-normal);
+}
+
+/* Bullet list marker */
+.markdown-preview-view ul > li::marker {
+  color: var(--text-muted);
+}
+
+/* Checklist / Task list */
+.markdown-preview-view .task-list-item {
+  list-style: none;
+  margin-left: -1.5em;
+  padding-left: 1.5em;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.markdown-preview-view .task-list-item-checkbox,
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border: 1.5px solid rgba(55, 53, 47, 0.35);
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+  margin-top: 3px;
+  position: relative;
+  transition: background 80ms ease, border-color 80ms ease;
+}
+
+.theme-dark .markdown-preview-view .task-list-item-checkbox,
+.theme-dark input[type="checkbox"] {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.markdown-preview-view .task-list-item-checkbox:checked,
+input[type="checkbox"]:checked {
+  background: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+.markdown-preview-view .task-list-item-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.markdown-preview-view .task-list-item.is-checked > p,
+.markdown-preview-view .task-list-item.is-checked {
+  color: var(--text-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 14. Tables                                                                  */
+/* -------------------------------------------------------------------------- */
+.markdown-preview-view table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5em 0;
+  font-size: 14px;
+}
+
+.markdown-preview-view table th,
+.markdown-preview-view table td {
+  border: 1px solid var(--notion-border);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+  color: var(--text-normal);
+  line-height: 1.5;
+}
+
+.markdown-preview-view table th {
+  background: var(--background-secondary);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.markdown-preview-view table tr:hover td {
+  background: var(--notion-hover);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 15. Horizontal Rule                                                         */
+/* -------------------------------------------------------------------------- */
+hr,
+.markdown-preview-view hr {
+  border: none;
+  border-top: 1px solid var(--notion-border);
+  margin: 1.5em 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 16. Tags                                                                    */
+/* -------------------------------------------------------------------------- */
+.tag,
+a.tag {
+  background: var(--background-secondary);
+  color: var(--interactive-accent);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  border: 1px solid var(--notion-border);
+  display: inline-block;
+  transition: background 80ms ease;
+}
+
+.tag:hover,
+a.tag:hover {
+  background: var(--notion-hover);
+  text-decoration: none;
+  border-bottom-color: var(--notion-border);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 17. Callouts                                                                */
+/* -------------------------------------------------------------------------- */
+.callout {
+  border-radius: var(--radius-m);
+  padding: 12px 16px;
+  margin: 0.5em 0;
+  border-left: none;
+  background: rgba(var(--callout-color), 0.1);
+  border: 1px solid rgba(var(--callout-color), 0.2);
+}
+
+.callout-title {
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: rgb(var(--callout-color));
+}
+
+.callout-title-icon {
+  width: 16px;
+  height: 16px;
+  color: rgb(var(--callout-color));
+}
+
+.callout-content {
+  font-size: 14px;
+  color: var(--text-normal);
+  opacity: 0.9;
+}
+
+.callout[data-callout="info"],
+.callout[data-callout="note"] {
+  --callout-color: var(--callout-info);
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="caution"] {
+  --callout-color: var(--callout-warning);
+}
+
+.callout[data-callout="error"],
+.callout[data-callout="danger"] {
+  --callout-color: var(--callout-error);
+}
+
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+  --callout-color: var(--callout-success);
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="hint"] {
+  --callout-color: var(--callout-tip);
+}
+
+.callout[data-callout="question"],
+.callout[data-callout="faq"],
+.callout[data-callout="help"] {
+  --callout-color: var(--callout-question);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 18. Bold, Italic, Strikethrough, Highlight                                 */
+/* -------------------------------------------------------------------------- */
+strong,
+.cm-strong {
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+em,
+.cm-em {
+  font-style: italic;
+  color: var(--text-normal);
+}
+
+s,
+del,
+.cm-strikethrough {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+mark,
+.markdown-preview-view mark {
+  background: var(--text-highlight-bg);
+  color: var(--text-normal);
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 19. Frontmatter                                                             */
+/* -------------------------------------------------------------------------- */
+.cm-hmd-frontmatter,
+.markdown-source-view .frontmatter-container {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-monospace-theme);
+}
+
+.frontmatter-container {
+  background: var(--background-secondary);
+  border: 1px solid var(--notion-border);
+  border-radius: var(--radius-m);
+  padding: 8px 12px;
+  margin-bottom: 1em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 20. Search & Modal                                                          */
+/* -------------------------------------------------------------------------- */
+.modal,
+.prompt {
+  background: var(--background-primary);
+  border: 1px solid var(--notion-border);
+  border-radius: var(--radius-l);
+  box-shadow: 0 4px 24px var(--notion-shadow), 0 0 0 1px var(--notion-border);
+  padding: 0;
+  overflow: hidden;
+}
+
+.prompt-input-container {
+  border-bottom: 1px solid var(--notion-border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt-input {
+  background: transparent;
+  border: none;
+  color: var(--text-normal);
+  font-size: 16px;
+  font-family: var(--font-text-theme);
+  outline: none;
+  width: 100%;
+  padding: 0;
+}
+
+.prompt-input::placeholder {
+  color: var(--text-faint);
+}
+
+.prompt-results {
+  padding: 6px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  border-radius: var(--radius-m);
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--text-normal);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.suggestion-item:hover,
+.suggestion-item.is-selected {
+  background: var(--notion-hover);
+}
+
+.suggestion-item.is-selected {
+  background: var(--notion-selected);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 21. Ribbon & Toolbar                                                        */
+/* -------------------------------------------------------------------------- */
+.workspace-ribbon {
+  background: var(--background-secondary);
+  border-right: 1px solid var(--notion-border);
+}
+
+.side-dock-ribbon-action {
+  color: var(--icon-color);
+  border-radius: var(--radius-m);
+  margin: 2px 4px;
+  padding: 6px;
+  transition: background 80ms ease, color 80ms ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-dock-ribbon-action:hover {
+  background: var(--notion-hover);
+  color: var(--icon-color-hover);
+}
+
+.side-dock-ribbon-action.is-active {
+  color: var(--icon-color-active);
+  background: var(--notion-hover);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 22. Status Bar                                                              */
+/* -------------------------------------------------------------------------- */
+.status-bar {
+  background: var(--background-secondary);
+  border-top: 1px solid var(--notion-border);
+  font-size: 12px;
+  color: var(--text-faint);
+  padding: 0 8px;
+  height: 24px;
+}
+
+.status-bar-item {
+  color: var(--text-faint);
+  font-size: 12px;
+  padding: 0 4px;
+  transition: color 80ms ease;
+}
+
+.status-bar-item:hover {
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 23. Buttons                                                                 */
+/* -------------------------------------------------------------------------- */
+button,
+.btn,
+.mod-cta {
+  background: var(--interactive-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-m);
+  padding: 6px 14px;
+  font-size: 14px;
+  font-family: var(--font-interface-theme);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 80ms ease;
+}
+
+button:hover,
+.btn:hover,
+.mod-cta:hover {
+  background: var(--interactive-accent-hover);
+}
+
+button.mod-warning {
+  background: var(--text-error);
+}
+
+button.mod-warning:hover {
+  background: #d44040;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 24. Input Fields                                                            */
+/* -------------------------------------------------------------------------- */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+textarea,
+.input {
+  background: var(--background-modifier-form-field);
+  border: 1px solid var(--notion-border);
+  border-radius: var(--radius-m);
+  color: var(--text-normal);
+  font-family: var(--font-text-theme);
+  font-size: 14px;
+  padding: 6px 10px;
+  outline: none;
+  transition: border-color 80ms ease, box-shadow 80ms ease;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px rgba(var(--interactive-accent-rgb), 0.2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 25. Scrollbars                                                              */
+/* -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-active-thumb-bg);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 26. Embeds                                                                  */
+/* -------------------------------------------------------------------------- */
+.markdown-embed {
+  border: 1px solid var(--notion-border);
+  border-radius: var(--radius-m);
+  background: var(--background-secondary);
+  padding: 16px 20px;
+  margin: 0.5em 0;
+}
+
+.markdown-embed-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 27. Graph View                                                              */
+/* -------------------------------------------------------------------------- */
+.graph-view.color-fill {
+  color: var(--interactive-accent);
+}
+
+.graph-view.color-circle {
+  color: var(--interactive-accent);
+}
+
+.graph-view.color-line {
+  color: var(--notion-border);
+}
+
+.graph-view.color-text {
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 28. File Explorer Improvements                                              */
+/* -------------------------------------------------------------------------- */
+.workspace-leaf-content[data-type="file-explorer"] {
+  padding: 8px 6px;
+}
+
+.nav-folder-collapse-indicator {
+  color: var(--icon-color);
+  transition: color 80ms ease;
+}
+
+.nav-folder-title:hover .nav-folder-collapse-indicator {
+  color: var(--icon-color-hover);
+}
+
+.nav-file-tag {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-left: 4px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 29. Properties / Frontmatter Panel                                         */
+/* -------------------------------------------------------------------------- */
+.metadata-container {
+  padding: 8px 0;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--notion-border);
+}
+
+.metadata-property {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 2px 4px;
+  border-radius: var(--radius-s);
+  transition: background 80ms ease;
+}
+
+.metadata-property:hover {
+  background: var(--notion-hover);
+}
+
+.metadata-property-key {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metadata-property-value {
+  font-size: 14px;
+  color: var(--text-normal);
+  flex: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 30. Notion-style Empty State / Placeholder                                 */
+/* -------------------------------------------------------------------------- */
+.cm-placeholder,
+.cm-line.cm-active .cm-placeholder {
+  color: var(--text-faint);
+  font-style: normal;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 31. Selection                                                               */
+/* -------------------------------------------------------------------------- */
+::selection {
+  background: var(--text-selection);
+}
+
+.cm-editor .cm-selectionBackground,
+.cm-focused .cm-selectionBackground {
+  background: var(--text-selection) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 32. Syntax Highlighting (CodeMirror 6)                                     */
+/* -------------------------------------------------------------------------- */
+.cm-s-obsidian span.cm-comment      { color: var(--code-comment); }
+.cm-s-obsidian span.cm-string       { color: var(--code-string); }
+.cm-s-obsidian span.cm-keyword      { color: var(--code-keyword); }
+.cm-s-obsidian span.cm-number       { color: var(--code-value); }
+.cm-s-obsidian span.cm-variable-2   { color: var(--code-property); }
+.cm-s-obsidian span.cm-variable     { color: var(--text-normal); }
+.cm-s-obsidian span.cm-def          { color: var(--code-function); }
+.cm-s-obsidian span.cm-operator     { color: var(--code-operator); }
+.cm-s-obsidian span.cm-meta         { color: var(--code-keyword); }
+.cm-s-obsidian span.cm-tag          { color: var(--code-tag); }
+.cm-s-obsidian span.cm-attribute    { color: var(--code-property); }
+.cm-s-obsidian span.cm-qualifier    { color: var(--code-value); }
+.cm-s-obsidian span.cm-property     { color: var(--code-property); }
+.cm-s-obsidian span.cm-type         { color: var(--code-keyword); }
+.cm-s-obsidian span.cm-atom        { color: var(--code-value); }
+.cm-s-obsidian span.cm-builtin      { color: var(--code-function); }
+
+/* -------------------------------------------------------------------------- */
+/* 33. Footnotes                                                               */
+/* -------------------------------------------------------------------------- */
+.markdown-preview-view .footnotes {
+  border-top: 1px solid var(--notion-border);
+  margin-top: 2em;
+  padding-top: 1em;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 34. Image Handling                                                          */
+/* -------------------------------------------------------------------------- */
+.markdown-preview-view img {
+  border-radius: var(--radius-m);
+  max-width: 100%;
+  display: block;
+  margin: 0.5em auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 35. Tooltips                                                                */
+/* -------------------------------------------------------------------------- */
+.tooltip {
+  background: var(--background-secondary);
+  border: 1px solid var(--notion-border);
+  border-radius: var(--radius-m);
+  color: var(--text-normal);
+  font-size: 12px;
+  padding: 4px 8px;
+  box-shadow: 0 2px 8px var(--notion-shadow);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 36. Context Menu                                                            */
+/* -------------------------------------------------------------------------- */
+.menu {
+  background: var(--background-primary);
+  border: 1px solid var(--notion-border);
+  border-radius: var(--radius-m);
+  box-shadow: 0 4px 16px var(--notion-shadow);
+  padding: 4px;
+  min-width: 180px;
+}
+
+.menu-item {
+  border-radius: var(--radius-s);
+  padding: 6px 10px;
+  font-size: 14px;
+  color: var(--text-normal);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 60ms ease;
+}
+
+.menu-item:hover {
+  background: var(--notion-hover);
+}
+
+.menu-item.is-warning {
+  color: var(--text-error);
+}
+
+.menu-item-icon {
+  color: var(--icon-color);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.menu-separator {
+  border-top: 1px solid var(--notion-border);
+  margin: 4px 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 37. Settings                                                                */
+/* -------------------------------------------------------------------------- */
+.vertical-tab-nav-item {
+  border-radius: var(--radius-m);
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  transition: background 60ms ease, color 60ms ease;
+}
+
+.vertical-tab-nav-item:hover {
+  background: var(--notion-hover);
+  color: var(--text-normal);
+}
+
+.vertical-tab-nav-item.is-active {
+  background: var(--notion-selected);
+  color: var(--text-normal);
+  font-weight: 500;
+}
+
+.setting-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--notion-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.setting-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-normal);
+}
+
+.setting-item-description {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 38. Toggle Switch                                                           */
+/* -------------------------------------------------------------------------- */
+.checkbox-container {
+  background: rgba(55, 53, 47, 0.2);
+  border-radius: 20px;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+  transition: background 80ms ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.theme-dark .checkbox-container {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.checkbox-container.is-enabled {
+  background: var(--interactive-accent);
+}
+
+.checkbox-container::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 80ms ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.checkbox-container.is-enabled::after {
+  transform: translateX(16px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 39. Active Line Highlight                                                   */
+/* -------------------------------------------------------------------------- */
+.cm-active-line,
+.cm-editor .cm-activeLine {
+  background: rgba(var(--interactive-accent-rgb), 0.04) !important;
+  border-radius: var(--radius-s);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 40. Drag & Drop                                                             */
+/* -------------------------------------------------------------------------- */
+.workspace-leaf.is-dragged {
+  opacity: 0.7;
+}
+
+.workspace-drop-ribbon {
+  background: var(--interactive-accent);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 41. Print                                                                   */
+/* -------------------------------------------------------------------------- */
+@media print {
+  .workspace-ribbon,
+  .workspace-tab-header-container,
+  .status-bar {
+    display: none !important;
+  }
+
+  .markdown-preview-view {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 42. Reduced Motion                                                          */
+/* -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
